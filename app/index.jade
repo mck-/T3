@@ -1,0 +1,49 @@
+!!! 5
+| <!--[if lt IE 7]> <html class="lt-ie7" lang="en"> <![endif]-->
+| <!--[if IE 7]> <html class="ie7" lang="en"> <![endif]-->
+| <!--[if IE 8]> <html class="ie8" lang="en"> <![endif]-->
+| <!--[if gt IE 8]> <!--> <html lang="en"> <!--<![endif]-->
+
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+
+  title
+
+  meta(name='description', content='')
+  meta(name='viewport', content='width=device-width')
+
+  //- Place favicon.ico and apple-touch-icon.png in the root directory
+
+  //- build:css styles/main.css
+  link(rel='stylesheet', href='lib/foundation.min.css')
+  link(rel='stylesheet', href='css/main.css')
+
+body(ng-app='T3')
+
+  //if lt IE 7
+    p.chromeframe
+      | You are using an outdated browser.
+      a(href='http://browsehappy.com/') Upgrade your browser today
+      | or
+      a(href='http://www.google.com/chromeframe/?redirect=true') install Google Chrome Frame
+      | to better experience this site.
+
+  //- Add your site or application content here
+  #main(ng-view='ng-view')
+
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular-sanitize.min.js')
+  script(src='https://cdn.firebase.com/v0/firebase.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/angularFire/0.1.0/angularfire.min.js')
+  //- build:js scripts/scripts.js
+  script(src='js/app.js')
+  script(src='js/controllers/main.js')
+  script(src='js/services/projects.js')
+
+  //- Google Analytics: change UA-XXXXX-X to be your site's ID.
+  //- script.
+  //-   var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+  //-   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  //-   g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  //-   s.parentNode.insertBefore(g,s)}(document,'script'));

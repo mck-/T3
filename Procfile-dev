@@ -1,0 +1,5 @@
+coffee: ./node_modules/coffee-script/bin/coffee --watch --compile --output app/tmp/js app/coffee
+jade:	./node_modules/jade/bin/jade -w app/views --out app/tmp/views
+index: ./node_modules/jade/bin/jade -w app/index.jade --out app/tmp
+stylus: ./node_modules/stylus/bin/stylus -w app/stylus --out app/tmp/css --compress
+server: ./node_modules/http-server/bin/http-server app/tmp

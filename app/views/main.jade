@@ -1,0 +1,15 @@
+.row
+  .large-10.columns.large-centered.panel#win(ng-show="game.winner > 0", ng-class="{1: 'p1', 2: 'p2'}[game.winner]") Player {{game.winner}} wins!
+
+.row
+  .large-10.columns.large-centered.panel#turn(ng-show="!game.winner") Player {{game.turn}} is thinking...
+
+.row
+  table(ng-show="game.board")
+    tbody
+      tr(ng-repeat="row in [0,1,2]")
+        td(ng-repeat="col in [0,1,2]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[game.board[row][col]]", ng-click="move(row, col)")&nbsp;
+
+.row
+  .large-8.columns.large-centered
+    button.large.expand(ng-click="reset()") New Game
