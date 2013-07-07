@@ -1,15 +1,18 @@
 app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   # Link up angularFire, which returns a promise
-  promise = T3Factory.link $scope, 'game', {}
+  promise = T3Factory.link $scope, 'game', {}, $routeParams.game
 
   promise.then (board) ->
 
+    $scope.gameURL = $location.absUrl()
+
     $scope.reset = () ->
-      $scope.game[$routeParams.game] =
+      $scope.game =
         board: (x = [false,false,false] for x in [false,false,false])
         turn: 1
         winner: false
+        started: false
 
     $scope.move = (row, col) ->
       unless $scope.game.board[row]?[col] or $scope.game.winner
