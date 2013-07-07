@@ -11,11 +11,16 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
     console.log game
 
-  ## Initialization
+  ## Utils
   ## ------------
     $scope.has_started = () ->
       $scope.game.started is 'started'
 
+    $scope.your_turn = () ->
+      $scope.game.turn.toString() == localStorage.player
+
+  ## Initialization
+  ## ------------
     $scope.newOnlineGame = () ->
       $scope.game =
         started: 'pending'
@@ -49,7 +54,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   ## ------------
 
     $scope.move = (row, col) ->
-      if $scope.game.turn.toString() == localStorage.player
+      if $scope.your_turn()
         unless $scope.game.board[row]?[col] or $scope.game.winner
           $scope.game.board[row]?[col] = $scope.game.turn
           $scope.game.turn = if $scope.game.turn is 1 then 2 else 1

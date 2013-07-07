@@ -3,7 +3,10 @@
     .large-10.columns.large-centered.panel#win(ng-show="game.winner > 0", ng-class="{1: 'p1', 2: 'p2'}[game.winner]") Player {{game.winner}} wins!
 
   .row
-    .large-10.columns.large-centered.panel#turn(ng-show="!game.winner") Player {{game.turn}} is thinking...
+    .large-10.columns.large-centered.panel#turn(ng-show="!game.winner && !your_turn()") Your opponent is thinking...
+
+  .row
+    .large-10.columns.large-centered.panel#turn(ng-show="!game.winner && your_turn()") Your turn!
 
   .row
     table
