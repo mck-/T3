@@ -6,4 +6,4 @@ app.config ($routeProvider) ->
       templateUrl: 'views/main.html'
       controller: 'MainCtrl'
     .otherwise
-      redirectTo: '/game'
+      redirectTo: "/#{Math.floor Math.random() * 7832684}"
