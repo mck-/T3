@@ -6,7 +6,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   promise.then (board) ->
 
     $scope.reset = () ->
-      $scope.game =
+      $scope.game[$routeParams.game] =
         board: (x = [false,false,false] for x in [false,false,false])
         turn: 1
         winner: false
@@ -18,14 +18,10 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   # Define logic in the promise
     $scope.$watch 'game.board', () ->
-      console.log 'watching..'
-      console.log 'winner?' + checkWinner($scope.game.board)
       $scope.game.winner = checkWinner($scope.game.board)
     , true
 
     checkWinner = (board) ->
-      console.log 'checking board'
-      console.log board
       checkWinRow(board[0]?[0], board[0]?[1], board[0]?[2]) or
       checkWinRow(board[1]?[0], board[1]?[1], board[1]?[2]) or
       checkWinRow(board[2]?[0], board[2]?[1], board[2]?[2]) or
