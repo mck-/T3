@@ -1,16 +1,32 @@
-.row
-  .large-10.columns.large-centered.panel#win(ng-show="game.started && game.winner > 0", ng-class="{1: 'p1', 2: 'p2'}[game.winner]") Player {{game.winner}} wins!
+.game(ng-show="has_started()")
+  .row
+    .large-10.columns.large-centered.panel#win(ng-show="game.winner > 0", ng-class="{1: 'p1', 2: 'p2'}[game.winner]") Player {{game.winner}} wins!
 
-.row
-  .large-10.columns.large-centered.panel#turn(ng-show="game.started && !game.winner") Player {{game.turn}} is thinking...
+  .row
+    .large-10.columns.large-centered.panel#turn(ng-show="!game.winner") Player {{game.turn}} is thinking...
 
-.row
-  table(ng-show="game.started")
-    tbody
-      tr(ng-repeat="row in [0,1,2]")
-        td(ng-repeat="col in [0,1,2]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[game.board[row][col]]", ng-click="move(row, col)")&nbsp;
+  .row
+    table
+      tbody
+        tr(ng-repeat="row in [0,1,2]")
+          td(ng-repeat="col in [0,1,2]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[game.board[row][col]]", ng-click="move(row, col)")&nbsp;
 
-.row
-  .large-8.columns.large-centered.panel
-    p Send this link to your friend
-    input(ng-model="gameURL")
+.link(ng-show="game.started == 'pending'")
+  .row
+    .large-8.columns.large-centered.panel
+      p Send this link to your friend
+      pre {{gameURL}}
+
+
+.menu(ng-show="!has_started()")
+  .row
+    .large-8.columns.large-centered
+      button.large.expand(ng-click="newOnlineGame()") Online Game
+
+  .row
+    .large-8.columns.large-centered
+      button.large.expand(ng-click="local()") Local Game
+
+  .row
+    .large-8.columns.large-centered
+      button.large.expand(ng-click="help()") How to play
