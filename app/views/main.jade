@@ -1,12 +1,9 @@
 .game(ng-show="has_started()")
   .row
-    .large-10.columns.large-centered.panel#win(ng-show="game.winner > 0", ng-class="{1: 'p1', 2: 'p2'}[game.winner]") Player {{game.winner}} wins!
-
-  .row
-    .large-10.columns.large-centered.panel#turn(ng-show="!game.winner && !your_turn()") Your opponent is thinking...
-
-  .row
-    .large-10.columns.large-centered.panel#turn(ng-show="!game.winner && your_turn()") Your turn!
+    .large-10.columns.large-centered
+      .panel(ng-show="game.winner > 0", ng-class="{1: 'p1', 2: 'p2'}[game.winner]") Player {{game.winner}} wins!
+      .panel(ng-show="!game.winner && !your_turn()") Your opponent is thinking...
+      .panel(ng-show="!game.winner && your_turn()") Your turn!
 
   .row
     table
@@ -25,11 +22,5 @@
   .row
     .large-8.columns.large-centered
       button.large.expand(ng-click="newOnlineGame()") Online Game
-
-  .row
-    .large-8.columns.large-centered
       button.large.expand(ng-click="local()") Local Game
-
-  .row
-    .large-8.columns.large-centered
       button.large.expand(ng-click="help()") How to play
