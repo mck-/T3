@@ -12,6 +12,10 @@
         tr(ng-repeat="row in [0,1,2]")
           td(ng-repeat="col in [0,1,2]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[game.board[row][col]]", ng-click="move(row, col)")&nbsp;
 
+  .row
+    .large-10.columns.large-centered
+      button(ng-show="game.winner > 0 || game.tie", ng-click='newBoard()') Rematch!
+
 .link(ng-show="game.started == 'pending'")
   .row
     .large-8.columns.large-centered.panel
