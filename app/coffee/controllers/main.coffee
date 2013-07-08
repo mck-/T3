@@ -9,15 +9,13 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   promise.then (game) ->
 
-    console.log game
-
   ## Utils
   ## ------------
     $scope.has_started = () ->
       $scope.game.started is 'started'
 
     $scope.your_turn = () ->
-      $scope.game.turn.toString() == localStorage.player
+      $scope.game.turn?.toString() == localStorage.player
 
   ## Initialization
   ## ------------
@@ -66,7 +64,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     , true
 
     fullBoard = (board) ->
-      board.every (row) ->
+      board?.every (row) ->
         row.every (square) ->
           square
 
