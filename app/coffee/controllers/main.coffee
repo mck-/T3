@@ -59,10 +59,16 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
           $scope.game.board[row]?[col] = $scope.game.turn
           $scope.game.turn = if $scope.game.turn is 1 then 2 else 1
 
-  # Define logic in the promise
+
     $scope.$watch 'game.board', () ->
       $scope.game.winner = checkWinner($scope.game.board) if $scope.game.board
+      if not $scope.game.winner and fullBoard($scope.game.board) then $scope.game.tie = true
     , true
+
+    fullBoard = (board) ->
+      board.every (row) ->
+        row.every (square) ->
+          square
 
     checkWinner = (board) ->
       checkWinRow(board[0]?[0], board[0]?[1], board[0]?[2]) or
