@@ -21,11 +21,3 @@
     .large-8.columns.large-centered.panel
       p Send this link to your friend
       pre {{gameURL}}
-
-
-.menu(ng-show="!has_started()")
-  .row
-    .large-8.columns.large-centered
-      button.large.expand(ng-click="newOnlineGame()") Online Game
-      button.large.expand(ng-click="local()") Local Game
-      button.large.expand(ng-click="help()") How to play

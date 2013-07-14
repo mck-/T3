@@ -1,8 +1,7 @@
-app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
+app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams, $timeout) ->
 
   $scope.gameURL = $location.absUrl()
-
-  localStorage.removeItem('player')
+  console.log 'Main Ctrl initialized'
 
   # Link up angularFire, which returns a promise
   promise = T3Factory.link $scope, 'game', {}, $routeParams.game
@@ -19,18 +18,13 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   ## Initialization
   ## ------------
-    $scope.newOnlineGame = () ->
-      $scope.game =
-        started: 'pending'
-      console.log 'initialized new game'
-      localStorage.player = 1
 
-    $scope.newBoard = () ->
-      $scope.game =
-        board: (x = [false,false,false] for x in [false,false,false])
-        turn: 1
-        winner: false
-        started: 'started'
+    $timeout $scope.game =
+      board: (x = [false,false,false] for x in [false,false,false])
+      turn: 1
+      winner: false
+      started: 'started'
+    , 10
 
   ## Connecting to pending game
   ## ------------
