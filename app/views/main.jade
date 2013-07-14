@@ -7,10 +7,7 @@
       .panel(ng-show="!game.winner && !game.tie && your_turn()") Your turn!
 
   .row
-    table
-      tbody
-        tr(ng-repeat="row in [0,1,2]")
-          td(ng-repeat="col in [0,1,2]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[game.board[row][col]]", ng-click="move(row, col)")&nbsp;
+    ttt(subgame="game.board1", turn="game.turn", yourturn="your_turn()")
 
   .row
     .large-10.columns.large-centered

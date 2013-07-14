@@ -5,7 +5,12 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   if $routeParams.game is 'local'
     $scope.game =
-      board: (x = [false,false,false] for x in [false,false,false])
+      board1:
+        board: (x = [false,false,false] for x in [false,false,false])
+        winner: false
+      board2:
+        board: (x = [false,false,false] for x in [false,false,false])
+        winner: false
       turn: 1
       winner: false
       started: 'started'
@@ -51,6 +56,11 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
         $scope.game =
           started: 'pending'
 
+  # Watch for winner
+  $scope.$watch 'game', () ->
+    $scope.winner = checkUltimateWinner($scope.game)
+  , true
+
   ## Utils
   ## ------------
   $scope.has_started = () ->
@@ -58,39 +68,8 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   $scope.your_turn = () ->
     return true if localStorage.local # Always your turn if local
-    $scope.game.turn?.toString() == localStorage.player
+    $scope.turn?.toString() == localStorage.player
 
-## Game logic
-## ------------
-
-  $scope.move = (row, col) ->
-    if $scope.your_turn()
-      unless $scope.game.board[row]?[col] or $scope.game.winner
-        $scope.game.board[row]?[col] = $scope.game.turn
-        $scope.game.turn = if $scope.game.turn is 1 then 2 else 1
-
-
-  $scope.$watch 'game.board', () ->
-    $scope.game.winner = checkWinner($scope.game.board) if $scope.game.board
-    if not $scope.game.winner and fullBoard($scope.game.board) then $scope.game.tie = true
-  , true
-
-  fullBoard = (board) ->
-    board?.every (row) ->
-      row.every (square) ->
-        square
-
-  checkWinner = (board) ->
-    checkWinRow(board[0]?[0], board[0]?[1], board[0]?[2]) or
-    checkWinRow(board[1]?[0], board[1]?[1], board[1]?[2]) or
-    checkWinRow(board[2]?[0], board[2]?[1], board[2]?[2]) or
-    checkWinRow(board[0]?[0], board[1]?[0], board[2]?[0]) or
-    checkWinRow(board[0]?[1], board[1]?[1], board[2]?[1]) or
-    checkWinRow(board[0]?[2], board[1]?[2], board[2]?[2]) or
-    checkWinRow(board[0]?[0], board[1]?[1], board[2]?[2]) or
-    checkWinRow(board[0]?[2], board[1]?[1], board[2]?[0])
-
-  checkWinRow = (a,b,c) ->
-    if a is b is c then a unless a is 0
-
-## ------------
+  checkUltimateWinner = (game) ->
+    #todo
+    $scope.game.winner = 1 if game.board1.winner
