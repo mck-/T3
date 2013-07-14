@@ -1,4 +1,4 @@
-app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams, $timeout) ->
+app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   $scope.gameURL = $location.absUrl()
   console.log 'Main Ctrl initialized'
@@ -19,12 +19,11 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams, $timeout
   ## Initialization
   ## ------------
 
-    $timeout $scope.game =
+    $scope.game =
       board: (x = [false,false,false] for x in [false,false,false])
       turn: 1
       winner: false
       started: 'started'
-    , 10
 
   ## Connecting to pending game
   ## ------------
