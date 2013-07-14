@@ -1,4 +1,4 @@
-window.app = angular.module('T3', ['ngSanitize', 'firebase'])
+window.app = angular.module('T3', ['firebase'])
 
 app.config ($routeProvider) ->
   $routeProvider
