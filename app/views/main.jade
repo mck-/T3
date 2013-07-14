@@ -16,7 +16,7 @@
     .large-10.columns.large-centered
       button(ng-show="game.winner > 0 || game.tie", ng-click='newBoard()') Rematch!
 
-.link(ng-show="game.started == 'pending'")
+.link(ng-show="!has_started()")
   .row
     .large-8.columns.large-centered.panel
       p Send this link to your friend
