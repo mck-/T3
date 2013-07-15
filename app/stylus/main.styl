@@ -2,6 +2,7 @@
 
 *
   box-sizing: border-box
+  transition: background-color 0.8s ease
 
 #main
   min-height: 100vh
@@ -10,25 +11,28 @@
 .panel
   font-family: "Comic Sans MS"
   text-align: center
-  font-size: 8vmin
+  font-size: 3vmin
   background-color: color_bg
 
 table
-  width: 60vmin
-  height: 60vmin
-  margin: 10vh auto
+  width: 25vmin
+  height: 25vmin
+  margin: 1vmin auto
 
   tr
     background-color: color_bg !important
 
+  &.win1
+    border: solid color_p1
+
+  &.win2
+    border: solid color_p2
 
 .p1
-  transition: background-color 0.8s ease
   background-color: color_p1
   color: color_bg
 
 .p2
-  transition: background-color 0.8s ease
   background-color: color_p2
   color: color_bg
 

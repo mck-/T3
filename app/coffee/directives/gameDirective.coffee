@@ -2,13 +2,16 @@ app.directive 'ttt', () ->
   scope:
     subgame: '='
     turn: '='
-    yourturn: '&'
   restrict: 'E'
   templateUrl: '../views/board.html'
   link: (scope, element, attrs) ->
 
     ## Game utils
     ## ------------
+
+    scope.your_turn = () ->
+      return true if localStorage.local # Always your turn if local
+      scope.turn.toString() == localStorage.player
 
     scope.toggle_turn = () ->
       scope.turn = if scope.turn is 1 then 2 else 1
@@ -17,7 +20,7 @@ app.directive 'ttt', () ->
     ## ------------
 
     scope.move = (row, col) ->
-      if scope.yourturn()
+      if scope.your_turn()
         unless scope.subgame.board[row]?[col]
           scope.subgame.board[row]?[col] = scope.turn
           scope.toggle_turn()

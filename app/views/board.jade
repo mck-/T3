@@ -1,4 +1,4 @@
-table
+table(ng-class="{1: 'win1', 2: 'win2'}[subgame.winner]")
   tbody
     tr(ng-repeat="row in [0,1,2]")
       td(ng-repeat="col in [0,1,2]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[subgame.board[row][col]]", ng-click="move(row, col)")&nbsp;

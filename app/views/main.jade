@@ -6,9 +6,32 @@
       .panel(ng-show="!game.winner && !game.tie && !your_turn()") Your opponent is thinking...
       .panel(ng-show="!game.winner && !game.tie && your_turn()") Your turn!
 
+  //- Ultimate boards ---------
   .row
-    ttt(subgame="game.board1", turn="game.turn", yourturn="your_turn()")
+    .large-4.small-4.columns
+      ttt(subgame="game.board1", turn="game.turn")
+    .large-4.small-4.columns
+      ttt(subgame="game.board2", turn="game.turn")
+    .large-4.small-4.columns
+      ttt(subgame="game.board3", turn="game.turn")
 
+  .row
+    .large-4.small-4.columns
+      ttt(subgame="game.board4", turn="game.turn")
+    .large-4.small-4.columns
+      ttt(subgame="game.board5", turn="game.turn")
+    .large-4.small-4.columns
+      ttt(subgame="game.board6", turn="game.turn")
+
+  .row
+    .large-4.small-4.columns
+      ttt(subgame="game.board7", turn="game.turn")
+    .large-4.small-4.columns
+      ttt(subgame="game.board8", turn="game.turn")
+    .large-4.small-4.columns
+      ttt(subgame="game.board9", turn="game.turn")
+
+  // --------------------
   .row
     .large-10.columns.large-centered
       button(ng-show="game.winner > 0 || game.tie", ng-click='newBoard()') Rematch!

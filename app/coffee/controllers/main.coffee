@@ -4,17 +4,18 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   # ------------------
 
   if $routeParams.game is 'local'
+
+    # Initialize main game
     $scope.game =
-      board1:
-        board: (x = [false,false,false] for x in [false,false,false])
-        winner: false
-      board2:
-        board: (x = [false,false,false] for x in [false,false,false])
-        winner: false
       turn: 1
       winner: false
       started: 'started'
 
+    # Initialize all subgames
+    for i in [1..9]
+      $scope.game["board#{i}"] =
+        board: (x = [false,false,false] for x in [false,false,false])
+        winner: false
 
   ## Online game
   # ------------------
@@ -56,9 +57,9 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
         $scope.game =
           started: 'pending'
 
-  # Watch for winner
+  # Watch for ultimate winner
   $scope.$watch 'game', () ->
-    $scope.winner = checkUltimateWinner($scope.game)
+    $scope.game.winner = checkUltimateWinner($scope.game)
   , true
 
   ## Utils
@@ -71,5 +72,16 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     $scope.turn?.toString() == localStorage.player
 
   checkUltimateWinner = (game) ->
-    #todo
-    $scope.game.winner = 1 if game.board1.winner
+    console.log "boards: " + game.board2.winner + game.board5.winner + game.board8.winner
+    console.log checkWinRow(game.board2.winner, game.board5.winner, game.board8.winner)
+    checkWinRow(game.board1.winner, game.board2.winner, game.board3.winner) or
+    checkWinRow(game.board4.winner, game.board5.winner, game.board6.winner) or
+    checkWinRow(game.board7.winner, game.board8.winner, game.board9.winner) or
+    checkWinRow(game.board1.winner, game.board4.winner, game.board7.winner) or
+    checkWinRow(game.board2.winner, game.board5.winner, game.board8.winner) or
+    checkWinRow(game.board3.winner, game.board6.winner, game.board9.winner) or
+    checkWinRow(game.board1.winner, game.board5.winner, game.board9.winner) or
+    checkWinRow(game.board3.winner, game.board5.winner, game.board7.winner)
+
+  checkWinRow = (a,b,c) ->
+    if a is b is c then a unless a is 0
