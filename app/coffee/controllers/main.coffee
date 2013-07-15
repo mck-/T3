@@ -1,5 +1,11 @@
 app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
+  ## Watch for ultimate winner
+  $scope.$watch 'game', () ->
+    $scope.game.winner = checkUltimateWinner($scope.game)
+  , true
+
+
   ## Local game
   # ------------------
 
@@ -38,16 +44,18 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
       if game.started == 'pending'
         console.log 'Connecting to the game!'
         localStorage.player = 2
+
+        # Initialize main game
         $scope.game =
-          board: (x = [false,false,false] for x in [false,false,false])
           turn: 1
           winner: false
           started: 'started'
 
-      else if game.started == 'started'
-        console.log 'Spectating?'
-        localStorage.player = 3
-        alert("game already started! Just a spectator...")
+        # Initialize all subgames
+        for i in [1..9]
+          $scope.game["board#{i}"] =
+            board: (x = [false,false,false] for x in [false,false,false])
+            winner: false
 
       # Initialize new game
       # --------------
@@ -57,10 +65,12 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
         $scope.game =
           started: 'pending'
 
-  # Watch for ultimate winner
-  $scope.$watch 'game', () ->
-    $scope.game.winner = checkUltimateWinner($scope.game)
-  , true
+      # Spectator mode
+      # ----------------
+      else if game.started == 'started'
+        console.log 'Spectating?'
+        localStorage.player = 3
+        alert("game already started! Just a spectator...")
 
   ## Utils
   ## ------------
