@@ -5,23 +5,28 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     $scope.game.winner = checkUltimateWinner($scope.game)
   , true
 
-
-  ## Local game
-  # ------------------
-
-  if $routeParams.game is 'local'
-
-    # Initialize main game
-    $scope.game =
+  ## Constructor for a new game
+  newGame = () ->
+    game =
       turn: 1
       winner: false
       started: 'started'
 
     # Initialize all subgames
     for i in [1..9]
-      $scope.game["board#{i}"] =
+      game["board#{i}"] =
         board: (x = [false,false,false] for x in [false,false,false])
         winner: false
+
+    game
+
+
+  ## Local game
+  # ------------------
+
+  if $routeParams.game is 'local'
+    # Initialize main game
+    $scope.game = newGame()
 
   ## Online game
   # ------------------
@@ -46,16 +51,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
         localStorage.player = 2
 
         # Initialize main game
-        $scope.game =
-          turn: 1
-          winner: false
-          started: 'started'
-
-        # Initialize all subgames
-        for i in [1..9]
-          $scope.game["board#{i}"] =
-            board: (x = [false,false,false] for x in [false,false,false])
-            winner: false
+        $scope.game = newGame()
 
       # Initialize new game
       # --------------
@@ -81,9 +77,10 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     return true if localStorage.local # Always your turn if local
     $scope.turn?.toString() == localStorage.player
 
+  $scope.rematch = () ->
+    $scope.game = newGame()
+
   checkUltimateWinner = (game) ->
-    console.log "boards: " + game.board2.winner + game.board5.winner + game.board8.winner
-    console.log checkWinRow(game.board2.winner, game.board5.winner, game.board8.winner)
     checkWinRow(game.board1.winner, game.board2.winner, game.board3.winner) or
     checkWinRow(game.board4.winner, game.board5.winner, game.board6.winner) or
     checkWinRow(game.board7.winner, game.board8.winner, game.board9.winner) or
