@@ -19,10 +19,10 @@ app.directive 'ttt', () ->
     ## Game logic
     ## ------------
 
-    scope.move = (row, col) ->
+    scope.move = (square) ->
       if scope.your_turn()
-        unless scope.subgame.board[row]?[col]
-          scope.subgame.board[row]?[col] = scope.turn
+        unless scope.subgame.board[square]
+          scope.subgame.board[square] = scope.turn
           scope.toggle_turn()
 
     scope.$watch 'subgame.board', () ->
@@ -32,19 +32,18 @@ app.directive 'ttt', () ->
 
   ## --------------
     fullBoard = (board) ->
-      board?.every (row) ->
-        row.every (square) ->
-          square
+      board?.every (square) ->
+        square
 
     checkWinner = (board) ->
-      checkWinRow(board[0]?[0], board[0]?[1], board[0]?[2]) or
-      checkWinRow(board[1]?[0], board[1]?[1], board[1]?[2]) or
-      checkWinRow(board[2]?[0], board[2]?[1], board[2]?[2]) or
-      checkWinRow(board[0]?[0], board[1]?[0], board[2]?[0]) or
-      checkWinRow(board[0]?[1], board[1]?[1], board[2]?[1]) or
-      checkWinRow(board[0]?[2], board[1]?[2], board[2]?[2]) or
-      checkWinRow(board[0]?[0], board[1]?[1], board[2]?[2]) or
-      checkWinRow(board[0]?[2], board[1]?[1], board[2]?[0])
+      checkWinRow(board[1], board[2], board[3]) or
+      checkWinRow(board[4], board[5], board[6]) or
+      checkWinRow(board[7], board[8], board[9]) or
+      checkWinRow(board[1], board[4], board[7]) or
+      checkWinRow(board[2], board[5], board[8]) or
+      checkWinRow(board[3], board[6], board[9]) or
+      checkWinRow(board[1], board[5], board[9]) or
+      checkWinRow(board[3], board[5], board[7])
 
     checkWinRow = (a,b,c) ->
       if a is b is c then a unless a is 0

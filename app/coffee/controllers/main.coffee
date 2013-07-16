@@ -15,7 +15,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     # Initialize all subgames
     for i in [1..9]
       game["board#{i}"] =
-        board: (x = [false,false,false] for x in [false,false,false])
+        board: (false for x in [1..9])
         winner: false
 
     game
