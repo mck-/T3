@@ -11,6 +11,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
       turn: 1
       winner: false
       started: 'started'
+      board_turn: 0
 
     # Initialize all subgames
     for i in [1..9]

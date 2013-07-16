@@ -2,6 +2,8 @@ app.directive 'ttt', () ->
   scope:
     subgame: '='
     turn: '='
+    board_turn: '='
+    board_id: '@'
   restrict: 'E'
   templateUrl: '../views/board.html'
   link: (scope, element, attrs) ->
@@ -16,11 +18,14 @@ app.directive 'ttt', () ->
     scope.toggle_turn = () ->
       scope.turn = if scope.turn is 1 then 2 else 1
 
+    scope.playable = () ->
+      scope.board_turn is 0 or scope.board_turn is scope.board_id
+
     ## Game logic
     ## ------------
 
     scope.move = (square) ->
-      if scope.your_turn()
+      if scope.your_turn() and scope.playable()
         unless scope.subgame.board[square]
           scope.subgame.board[square] = scope.turn
           scope.toggle_turn()
