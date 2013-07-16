@@ -71,6 +71,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   ## Utils
   ## ------------
+
   $scope.has_started = () ->
     $scope.game.started is 'started'
 

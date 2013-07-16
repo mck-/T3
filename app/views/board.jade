@@ -1,8 +1,9 @@
-table(ng-class="{1: 'win1', 2: 'win2'}[subgame.winner]")
-  tbody
-    tr
-      td(ng-repeat="square in [1,2,3]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[subgame.board[square]]", ng-click="move(square)")&nbsp;
-    tr
-      td(ng-repeat="square in [4,5,6]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[subgame.board[square]]", ng-click="move(square)")&nbsp;
-    tr
-      td(ng-repeat="square in [7,8,9]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[subgame.board[square]]", ng-click="move(square)")&nbsp;
+.subboard(ng-class="{'playable': playable(), 'unplayable':!playable()}")
+  table(ng-class="{1: 'win1', 2: 'win2'}[subgame.winner]")
+    tbody
+      tr
+        td(ng-repeat="square in [1,2,3]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[subgame.board[square]]", ng-click="move(square)")&nbsp;
+      tr
+        td(ng-repeat="square in [4,5,6]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[subgame.board[square]]", ng-click="move(square)")&nbsp;
+      tr
+        td(ng-repeat="square in [7,8,9]", ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[subgame.board[square]]", ng-click="move(square)")&nbsp;
