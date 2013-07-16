@@ -2,15 +2,14 @@ app.directive 'ttt', () ->
   scope:
     subgame: '='
     turn: '='
-    board_turn: '='
-    board_id: '@'
+    bturn: '='
+    bid: '@'
   restrict: 'E'
   templateUrl: '../views/board.html'
   link: (scope, element, attrs) ->
 
     ## Game utils
     ## ------------
-
     scope.your_turn = () ->
       return true if localStorage.local # Always your turn if local
       scope.turn.toString() == localStorage.player
@@ -18,8 +17,11 @@ app.directive 'ttt', () ->
     scope.toggle_turn = () ->
       scope.turn = if scope.turn is 1 then 2 else 1
 
+    scope.toggle_board_turn = (square) ->
+      scope.bturn = square
+
     scope.playable = () ->
-      scope.board_turn is 0 or scope.board_turn is scope.board_id
+      scope.bturn is 0 or scope.bturn.toString() is scope.bid.toString()
 
     ## Game logic
     ## ------------
@@ -29,6 +31,7 @@ app.directive 'ttt', () ->
         unless scope.subgame.board[square]
           scope.subgame.board[square] = scope.turn
           scope.toggle_turn()
+          scope.toggle_board_turn(square)
 
     scope.$watch 'subgame.board', () ->
       scope.subgame.winner = checkWinner(scope.subgame.board)
