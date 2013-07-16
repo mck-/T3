@@ -1,4 +1,4 @@
-3T [WIP]
+T3 [WIP]
 ============
 
 Multiplayer Ultimate Tic-Tac-Toe on AngularFire
