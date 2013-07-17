@@ -1,6 +1,7 @@
 app.directive 'ttt', () ->
   scope:
     subgame: '='
+    game: '='
     turn: '='
     bturn: '='
     bid: '@'
@@ -18,10 +19,13 @@ app.directive 'ttt', () ->
       scope.turn = if scope.turn is 1 then 2 else 1
 
     scope.toggle_board_turn = (square) ->
-      scope.bturn = square
+      if fullBoard(scope.game["board#{square}"].board)
+        scope.bturn = -1
+      else
+        scope.bturn = square
 
     scope.playable = () ->
-      scope.bturn is 0 or scope.bturn.toString() is scope.bid.toString()
+      scope.bturn is -1 or scope.bturn.toString() is scope.bid.toString()
 
     ## Game logic
     ## ------------
@@ -44,14 +48,14 @@ app.directive 'ttt', () ->
         square
 
     checkWinner = (board) ->
-      checkWinRow(board[1], board[2], board[3]) or
-      checkWinRow(board[4], board[5], board[6]) or
-      checkWinRow(board[7], board[8], board[9]) or
+      checkWinRow(board[0], board[1], board[2]) or
+      checkWinRow(board[3], board[4], board[5]) or
+      checkWinRow(board[6], board[7], board[8]) or
+      checkWinRow(board[0], board[3], board[6]) or
       checkWinRow(board[1], board[4], board[7]) or
       checkWinRow(board[2], board[5], board[8]) or
-      checkWinRow(board[3], board[6], board[9]) or
-      checkWinRow(board[1], board[5], board[9]) or
-      checkWinRow(board[3], board[5], board[7])
+      checkWinRow(board[0], board[4], board[8]) or
+      checkWinRow(board[2], board[4], board[6])
 
     checkWinRow = (a,b,c) ->
       if a is b is c then a unless a is 0

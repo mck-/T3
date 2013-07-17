@@ -11,12 +11,12 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
       turn: 1
       winner: false
       started: 'started'
-      board_turn: 0
+      board_turn: -1
 
     # Initialize all subgames
-    for i in [1..9]
+    for i in [0..8]
       game["board#{i}"] =
-        board: (false for x in [1..9])
+        board: (false for x in [0..8])
         winner: false
 
     game
@@ -83,14 +83,14 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     $scope.game = newGame()
 
   checkUltimateWinner = (game) ->
-    checkWinRow(game.board1.winner, game.board2.winner, game.board3.winner) or
-    checkWinRow(game.board4.winner, game.board5.winner, game.board6.winner) or
-    checkWinRow(game.board7.winner, game.board8.winner, game.board9.winner) or
+    checkWinRow(game.board0.winner, game.board1.winner, game.board2.winner) or
+    checkWinRow(game.board3.winner, game.board4.winner, game.board5.winner) or
+    checkWinRow(game.board6.winner, game.board7.winner, game.board8.winner) or
+    checkWinRow(game.board0.winner, game.board3.winner, game.board6.winner) or
     checkWinRow(game.board1.winner, game.board4.winner, game.board7.winner) or
     checkWinRow(game.board2.winner, game.board5.winner, game.board8.winner) or
-    checkWinRow(game.board3.winner, game.board6.winner, game.board9.winner) or
-    checkWinRow(game.board1.winner, game.board5.winner, game.board9.winner) or
-    checkWinRow(game.board3.winner, game.board5.winner, game.board7.winner)
+    checkWinRow(game.board0.winner, game.board4.winner, game.board8.winner) or
+    checkWinRow(game.board2.winner, game.board4.winner, game.board6.winner)
 
   checkWinRow = (a,b,c) ->
     if a is b is c then a unless a is 0
