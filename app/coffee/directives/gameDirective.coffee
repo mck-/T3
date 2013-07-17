@@ -2,8 +2,6 @@ app.directive 'ttt', () ->
   scope:
     subgame: '='
     game: '='
-    turn: '='
-    bturn: '='
     bid: '@'
   restrict: 'E'
   templateUrl: '../views/board.html'
@@ -13,19 +11,19 @@ app.directive 'ttt', () ->
     ## ------------
     scope.your_turn = () ->
       return true if localStorage.local # Always your turn if local
-      scope.turn.toString() == localStorage.player
+      scope.game.turn.toString() == localStorage.player
 
     scope.toggle_turn = () ->
-      scope.turn = if scope.turn is 1 then 2 else 1
+      scope.game.turn = if scope.game.turn is 1 then 2 else 1
 
     scope.toggle_board_turn = (square) ->
       if fullBoard(scope.game["board#{square}"].board)
-        scope.bturn = -1
+        scope.game.board_turn = -1
       else
-        scope.bturn = square
+        scope.game.board_turn = square
 
     scope.playable = () ->
-      scope.bturn is -1 or scope.bturn.toString() is scope.bid.toString()
+      scope.game.board_turn is -1 or scope.game.board_turn.toString() is scope.bid
 
     ## Game logic
     ## ------------
@@ -33,7 +31,7 @@ app.directive 'ttt', () ->
     scope.move = (square) ->
       if scope.your_turn() and scope.playable()
         unless scope.subgame.board[square]
-          scope.subgame.board[square] = scope.turn
+          scope.subgame.board[square] = scope.game.turn
           scope.toggle_turn()
           scope.toggle_board_turn(square)
 
