@@ -23,7 +23,7 @@ app.directive 'ttt', () ->
         scope.game.board_turn = square
 
     scope.playable = () ->
-      scope.game.board_turn is -1 or scope.game.board_turn.toString() is scope.bid
+      scope.game.board_turn is -1 or scope.game.board_turn?.toString() is scope.bid
 
     ## Game logic
     ## ------------
