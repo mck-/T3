@@ -3,6 +3,8 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   ## Watch for ultimate winner
   $scope.$watch 'game', () ->
     $scope.game.winner = checkUltimateWinner($scope.game)
+    $scope.game.status = "Player #{$scope.game.winner} is the ultimate winner!" if $scope.game.winner
+    $scope.game.status = "It's a tie!" if $scope.game.tie
   , true
 
   ## Constructor for a new game
@@ -12,6 +14,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
       winner: false
       started: 'started'
       board_turn: -1
+      status: 'Player 1 to start the game!'
 
     # Initialize all subgames
     for i in [0..8]
