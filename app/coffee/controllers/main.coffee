@@ -85,6 +85,9 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   $scope.rematch = () ->
     $scope.game = newGame()
 
+  $scope.homepage = () ->
+    $location.path "/"
+
   checkUltimateWinner = (game) ->
     checkWinRow(game.board0.winner, game.board1.winner, game.board2.winner) or
     checkWinRow(game.board3.winner, game.board4.winner, game.board5.winner) or

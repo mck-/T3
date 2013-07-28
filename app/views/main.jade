@@ -32,8 +32,7 @@
     .large-10.columns.large-centered
       button(ng-show="game.winner > 0 || game.tie", ng-click='rematch()') Rematch!
 
-.link(ng-show="!has_started()")
-  .row
-    .large-8.columns.large-centered.panel
-      p Send this link to your friend
-      pre {{gameURL}}
+.row.statusbar.panel(ng-show="!has_started()")
+  p Send this link to your friend
+  pre {{gameURL}}
+  button.large(ng-click="homepage()") Go Back
