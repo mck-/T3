@@ -37,7 +37,7 @@ app.directive 'ttt', () ->
           scope.toggle_board_turn(square)
 
     scope.$watch 'subgame.board', () ->
-      scope.subgame.winner = checkWinner(scope.subgame.board)
+      scope.subgame.winner = checkWinner(scope.subgame.board) if not scope.subgame.winner
       if not scope.subgame.winner and fullBoard(scope.subgame.board) then scope.subgame.tie = true
     , true
 
