@@ -24,7 +24,7 @@ app.directive 'ttt', () ->
         scope.game.board_turn = square
 
     scope.playable = () ->
-      scope.game.board_turn is -1 or scope.game.board_turn?.toString() is scope.bid
+      scope.game?.board_turn is -1 or scope.game?.board_turn?.toString() is scope.bid
 
     ## Game logic
     ## ------------
@@ -37,8 +37,9 @@ app.directive 'ttt', () ->
           scope.toggle_board_turn(square)
 
     scope.$watch 'subgame.board', () ->
-      scope.subgame.winner = checkWinner(scope.subgame.board) if not scope.subgame.winner
-      if not scope.subgame.winner and fullBoard(scope.subgame.board) then scope.subgame.tie = true
+      if scope.game?.started is 'started'
+        scope.subgame.winner = checkWinner(scope.subgame.board) if not scope.subgame.winner
+        if not scope.subgame.winner and fullBoard(scope.subgame.board) then scope.subgame.tie = true
     , true
 
   ## --------------

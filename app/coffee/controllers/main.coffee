@@ -1,10 +1,13 @@
 app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
+  $scope.game = {}
+
   ## Watch for ultimate winner
   $scope.$watch 'game', () ->
-    $scope.game.winner = checkUltimateWinner($scope.game)
-    $scope.game.status = "Player #{$scope.game.winner} is the ultimate winner!" if $scope.game.winner
-    $scope.game.status = "It's a tie!" if $scope.game.tie
+    if $scope.game.started is 'started'
+      $scope.game.winner = checkUltimateWinner($scope.game)
+      $scope.game.status = "Player #{$scope.game.winner} is the ultimate winner!" if $scope.game.winner
+      $scope.game.status = "It's a tie!" if $scope.game.tie
   , true
 
   ## Constructor for a new game
