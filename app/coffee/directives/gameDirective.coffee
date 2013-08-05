@@ -10,7 +10,7 @@ app.directive 'ttt', () ->
     ## Game utils
     ## ------------
     scope.your_turn = () ->
-      return true if localStorage.local # Always your turn if local
+      return true if scope.game.local # Always your turn if local
       scope.game.turn.toString() == localStorage.player
 
     scope.toggle_turn = () ->

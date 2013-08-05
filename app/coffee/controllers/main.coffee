@@ -31,6 +31,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   if $routeParams.game is 'local'
     # Initialize main game
     $scope.game = newGame()
+    $scope.game.local = true
 
   ## Online game
   # ------------------
