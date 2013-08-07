@@ -32,7 +32,11 @@
     .large-10.columns.large-centered
       button(ng-show="game.winner > 0 || game.tie", ng-click='rematch()') Rematch!
 
-.row.statusbar.panel(ng-show="!has_started()")
+.row.statusbar.panel(ng-show="is_pending()")
   p Send this link to your friend
   pre {{gameURL}}
   button.large(ng-click="homepage()") Go Back
+
+.row.statusbar.panel(ng-show="!is_pending() && !has_started()")
+  p Your opponent has fled!
+  button.large(ng-click="homepage()") Go Home

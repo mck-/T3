@@ -52,11 +52,16 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
       ## Initialization
       ## ------------
 
+      # Attach onDisconnect event
+      # ------------
+      ref = new Firebase 'https://3t.firebaseio.com/' + $routeParams.game
+
       # Connecting to pending game
       # ------------
       if game.started == 'pending'
         console.log 'Connecting to the game!'
         localStorage.player = 2
+        ref.onDisconnect().set null
 
         # Initialize main game
         $scope.game = newGame()
@@ -66,6 +71,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
       else if game.started is undefined
         console.log 'Created new game'
         localStorage.player = 1
+        ref.onDisconnect().set null
         $scope.game =
           started: 'pending'
 
@@ -78,6 +84,9 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   ## Utils
   ## ------------
+
+  $scope.is_pending = () ->
+    $scope.game.started is 'pending'
 
   $scope.has_started = () ->
     $scope.game.started is 'started'
