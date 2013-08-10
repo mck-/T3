@@ -1,6 +1,7 @@
 .game(ng-show="has_started()")
   .row.statusbar.panel
     p {{game.status}}
+  .turn(ng-class="{1: 'p1', 2: 'p2', 0: 'empty'}[game.turn]")
 
   //- Ultimate boards ---------
   .row
