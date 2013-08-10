@@ -35,7 +35,7 @@
 
 .row.statusbar.panel(ng-show="is_pending() || !game")
   p Send this link to your friend
-  input(type="url", readonly, value="{{gameURL}}")
+  input(type="text", value="{{gameURL}}")
   button.large(ng-click="homepage()") Go Back
 
 .row.statusbar.panel(ng-show="!is_pending() && !has_started() && game")
