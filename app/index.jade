@@ -31,12 +31,12 @@ body(ng-app='T3')
       | to better experience this site.
 
   //- Add your site or application content here
-  #main(ng-view='ng-view')
+  #main(ng-view='ng-view', ng-animate="{enter: 'view-enter'} ")
 
-  // script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js')
-  // script(src='https://cdn.firebase.com/v0/firebase.js')
-  script(src='lib/angular.min.js')
-  script(src='lib/firebase.js')
+  script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js')
+  script(src='https://cdn.firebase.com/v0/firebase.js')
+  //script(src='lib/angular.min.js')
+  //script(src='lib/firebase.js')
   script(src='lib/angularfire.js')
   //- build:js scripts/scripts.js
   script(src='js/app.js')

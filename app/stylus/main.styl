@@ -2,7 +2,7 @@
 
 *
   box-sizing: border-box
-  transition: background-color 0.8s ease
+  transition: all 0.8s ease
 
 #main
   min-height: 100vh
@@ -29,9 +29,6 @@ table
 .p2
   background-color: color_p2
   color: color_bg
-
-.subboard
-  -webkit-transition: all 0.8s ease
 
 .playable
   -webkit-transform: scale(1)
@@ -97,3 +94,15 @@ button, .button
 
   &:hover
     background-color: color_button_hover
+
+.view-enter, .view-leave
+  -webkit-transition: all 3s ease
+  -moz-transition: all 3s ease
+  -o-transition: all 3s ease
+  transition: all 3s ease
+
+.view-enter
+  opacity: 0
+
+.view-enter.view-enter-active
+  opacity: 1
