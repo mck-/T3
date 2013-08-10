@@ -32,9 +32,11 @@ table
 
 .playable
   -webkit-transform: scale(1)
+  -moz-transform: scale(1)
 
 .unplayable
   -webkit-transform: scale(0.8)
+  -moz-transform: scale(0.8)
   opacity: 0.5
 
 .statusbar
@@ -62,34 +64,51 @@ table
 
   table
     -webkit-transform: scale(1.5)
+    -moz-transform: scale(1.5)
 
   tr:nth-child(3) td:nth-child(2)
     -webkit-animation-duration: 1s
     -webkit-animation-name: fadein
     -webkit-animation-fill-mode: forwards
+    -moz-animation-duration: 1s
+    -moz-animation-name: fadein
+    -moz-animation-fill-mode: forwards
 
   tr:nth-child(2) td:nth-child(2)
     -webkit-animation-delay: 0.5s
     -webkit-animation-duration: 1s
     -webkit-animation-name: fadein
     -webkit-animation-fill-mode: forwards
+    -moz-animation-delay: 0.5s
+    -moz-animation-duration: 1s
+    -moz-animation-name: fadein
+    -moz-animation-fill-mode: forwards
 
   tr:first-child td:nth-child(2)
     -webkit-animation-delay: 1s
     -webkit-animation-duration: 1s
     -webkit-animation-name: fadein
     -webkit-animation-fill-mode: forwards
+    -moz-animation-delay: 1s
+    -moz-animation-duration: 1s
+    -moz-animation-name: fadein
+    -moz-animation-fill-mode: forwards
 
   tr:first-child td:nth-child(odd)
     -webkit-animation-delay: 1.3s
     -webkit-animation-duration: 1s
     -webkit-animation-name: fadein
     -webkit-animation-fill-mode: forwards
+    -moz-animation-delay: 1.3s
+    -moz-animation-duration: 1s
+    -moz-animation-name: fadein
+    -moz-animation-fill-mode: forwards
 
 @keyframes fadein
   from
     background-color: color_bg
     -webkit-transform: scale(0.5)
+    -moz-transform: scale(0.5)
   to
     background-color: color_status_bg
 
