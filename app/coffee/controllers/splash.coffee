@@ -11,3 +11,6 @@ app.controller 'SplashCtrl', ($scope, $location) ->
   $scope.newLocalGame = () ->
     console.log 'Creating local game'
     $location.path "/local"
+
+  $scope.howToPlay = () ->
+    $location.path "/howto"

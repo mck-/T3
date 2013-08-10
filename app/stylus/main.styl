@@ -52,6 +52,8 @@ table
     font-size: 4vmin
     margin: 5vmin
 
+// Splash page
+
 .splash
   padding: 20vh
 
@@ -95,6 +97,8 @@ button, .button
   &:hover
     background-color: color_button_hover
 
+// ng-view animate
+
 .view-enter, .view-leave
   -webkit-transition: all 3s ease
   -moz-transition: all 3s ease
@@ -106,3 +110,23 @@ button, .button
 
 .view-enter.view-enter-active
   opacity: 1
+
+// How to play
+
+.howto
+  .panel
+    min-height: 100vh
+    background-color: white
+    p
+      color: color_status_bg
+
+  li
+    list-style-type: cjk-ideographic
+    text-align: left
+    color: color_status_bg
+    font-family: font_secondary
+    font-size: 18px
+    font-weight: 100
+
+  button
+    margin: 25px auto
