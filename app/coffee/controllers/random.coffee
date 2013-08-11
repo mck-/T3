@@ -4,6 +4,11 @@ app.controller 'RandomCtrl', ($scope, $location, $timeout) ->
   localStorage.removeItem('player')
   localStorage.removeItem('waiting')
 
+  numRef = new Firebase 'https://3t.firebaseio.com/'
+  numRef.on 'value', (data) ->
+    $scope.$apply () ->
+      $scope.num_games = (k for k,v of data.val()).length
+
   $scope.homepage = () ->
     fbRef.off 'value'
     fbRef.set null
