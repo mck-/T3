@@ -3,6 +3,8 @@ T3
 
 [Multiplayer Ultimate Tic-Tac-Toe on AngularFire](http://mck-.github.io/T3)
 
+![alt T3 -- Ultimate Tic-Tac-Toe](https://github.com/mck-/T3/blob/master/T3-splash.png "T3 -- Ultimate Tic-Tac-Toe")
+
 The game consists of 9 Tic-Tac-Toe boards. The goal is to get three boards in a row.
 
 Rules:
