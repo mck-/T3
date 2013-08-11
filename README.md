@@ -15,6 +15,12 @@ Rules:
 - When a board ends up in a tie, the board belongs to nobody
 - Happy Tic-Tac-Toeing!
 
+Features:
+
+- Play against random opponent online
+- Play against friend by sending a URL
+- Play locally on 1 computer
+
 Dev
 ------------
 just `make`
