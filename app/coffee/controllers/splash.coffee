@@ -6,7 +6,7 @@ app.controller 'SplashCtrl', ($scope, $location) ->
   $scope.newOnlineGame = () ->
     console.log 'Creating new online game'
     localStorage.player = 1
-    $location.path "/#{Math.floor Math.random() * 78343}"
+    $location.path "/#{Math.floor Math.random() * 99999}"
 
   $scope.newLocalGame = () ->
     console.log 'Creating local game'
@@ -14,3 +14,6 @@ app.controller 'SplashCtrl', ($scope, $location) ->
 
   $scope.howToPlay = () ->
     $location.path "/howto"
+
+  $scope.randomMatch = () ->
+    $location.path "/random"
