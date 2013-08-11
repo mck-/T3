@@ -102,6 +102,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     $scope.game = newGame()
 
   $scope.homepage = () ->
+    $scope.game = null
     $location.path "/"
 
   fullBoard = (game) ->
