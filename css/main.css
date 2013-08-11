@@ -1,0 +1,40 @@
+*{box-sizing:border-box;-webkit-transition:all .8s ease;-moz-transition:all .8s ease;-o-transition:all .8s ease;transition:all .8s ease}
+#main{min-height:100vh;min-width:100vw}
+table{width:25vmin;height:25vmin;margin:1.5vh auto;}
+table tr{background-color:#f4f5f0 !important}
+table.win1{border:solid #3cb5b5}
+table.win2{border:solid #e53b51}
+.p1{background-color:#3cb5b5;color:#f4f5f0}
+.p2{background-color:#e53b51;color:#f4f5f0}
+.playable{-webkit-transform:scale(1);-moz-transform:scale(1)}
+.unplayable{-webkit-transform:scale(.8);-moz-transform:scale(.8);opacity:.5}
+.statusbar{margin-bottom:0;max-width:100%;background-color:#ec6c20;text-align:center;}
+.statusbar p{color:#fff;font-family:"Galindo",sans-serif;font-size:5vmin;font-weight:800}
+.statusbar input{font-size:3vmin;font-family:"Fauna One",serif;text-align:center;margin:5vmin auto;width:60vw}
+.turn{height:1vh}
+.splash{padding:20vh;}
+.splash table{-webkit-transform:scale(1.5);-moz-transform:scale(1.5)}
+.splash tr:nth-child(3) td:nth-child(2){-webkit-animation-duration:1s;-webkit-animation-name:fadein;-webkit-animation-fill-mode:forwards;-moz-animation-duration:1s;-moz-animation-name:fadein;-moz-animation-fill-mode:forwards}
+.splash tr:nth-child(2) td:nth-child(2){-webkit-animation-delay:.5s;-webkit-animation-duration:1s;-webkit-animation-name:fadein;-webkit-animation-fill-mode:forwards;-moz-animation-delay:.5s;-moz-animation-duration:1s;-moz-animation-name:fadein;-moz-animation-fill-mode:forwards}
+.splash tr:first-child td:nth-child(2){-webkit-animation-delay:1s;-webkit-animation-duration:1s;-webkit-animation-name:fadein;-webkit-animation-fill-mode:forwards;-moz-animation-delay:1s;-moz-animation-duration:1s;-moz-animation-name:fadein;-moz-animation-fill-mode:forwards}
+.splash tr:first-child td:nth-child(odd){-webkit-animation-delay:1.3s;-webkit-animation-duration:1s;-webkit-animation-name:fadein;-webkit-animation-fill-mode:forwards;-moz-animation-delay:1.3s;-moz-animation-duration:1s;-moz-animation-name:fadein;-moz-animation-fill-mode:forwards}
+button,.button{background-color:#3cb5b5;font-family:"Galindo",sans-serif;}
+button:hover,.button:hover{background-color:#e53b51}
+.view-enter,.view-leave{-webkit-transition:all 3s ease;-moz-transition:all 3s ease;-o-transition:all 3s ease;transition:all 3s ease}
+.view-enter{opacity:0}
+.view-enter.view-enter-active{opacity:1}
+.howto .panel{min-height:100vh;background-color:#fff;}
+.howto .panel p{color:#ec6c20}
+.howto li{list-style-type:cjk-ideographic;text-align:left;color:#ec6c20;font-family:"Fauna One",serif;font-size:18px;font-weight:100}
+.howto button{margin:25px auto}
+@-moz-keyframes fadein{0%{background-color:#f4f5f0;-webkit-transform:scale(.5);-moz-transform:scale(.5)}
+100%{background-color:#ec6c20}
+}@-webkit-keyframes fadein{0%{background-color:#f4f5f0;-webkit-transform:scale(.5);-moz-transform:scale(.5)}
+100%{background-color:#ec6c20}
+}@-o-keyframes fadein{0%{background-color:#f4f5f0;-webkit-transform:scale(.5);-moz-transform:scale(.5)}
+100%{background-color:#ec6c20}
+}@-ms-keyframes fadein{0%{background-color:#f4f5f0;-webkit-transform:scale(.5);-moz-transform:scale(.5)}
+100%{background-color:#ec6c20}
+}@keyframes fadein{0%{background-color:#f4f5f0;-webkit-transform:scale(.5);-moz-transform:scale(.5)}
+100%{background-color:#ec6c20}
+}
