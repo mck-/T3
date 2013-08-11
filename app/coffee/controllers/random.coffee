@@ -7,7 +7,7 @@ app.controller 'RandomCtrl', ($scope, $location, $timeout) ->
   numRef = new Firebase 'https://3t.firebaseio.com/'
   numRef.on 'value', (data) ->
     $scope.$apply () ->
-      $scope.num_games = (k for k,v of data.val()).length
+      $scope.num_games = (k for k,v of data.val()).length * 2
 
   $scope.homepage = () ->
     fbRef.off 'value'
