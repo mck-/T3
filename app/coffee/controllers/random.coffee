@@ -5,6 +5,7 @@ app.controller 'RandomCtrl', ($scope, $location, $timeout) ->
   localStorage.removeItem('waiting')
 
   $scope.homepage = () ->
+    fbRef.off 'value'
     fbRef.set null
     $location.path "/"
 
