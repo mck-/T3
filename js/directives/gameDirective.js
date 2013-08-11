@@ -8,7 +8,7 @@
         bid: '@'
       },
       restrict: 'E',
-      templateUrl: '../views/board.html',
+      templateUrl: 'views/board.html',
       link: function(scope, element, attrs) {
         var checkWinRow, checkWinner, fullBoard;
         scope.your_turn = function() {
