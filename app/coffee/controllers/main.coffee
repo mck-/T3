@@ -5,7 +5,12 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     if $scope.game?.started is 'started'
       $scope.game.winner = checkUltimateWinner($scope.game)
       $scope.game.status = "Player #{$scope.game.winner} is the ultimate winner!" if $scope.game.winner
-      $scope.game.status = "It's a tie!" if $scope.game.tie
+
+      # Check for tie game
+      if not $scope.game.winner and fullBoard($scope.game)
+        $scope.game.tie = true
+        $scope.game.status = "OMG -- It's a tie!"
+
   , true
 
   ## Constructor for a new game
@@ -98,6 +103,11 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   $scope.homepage = () ->
     $location.path "/"
+
+  fullBoard = (game) ->
+    [0..8].every (i) ->
+      board = game["board#{i}"]
+      return board.winner or board.tie
 
   checkUltimateWinner = (game) ->
     checkWinRow(game.board0.winner, game.board1.winner, game.board2.winner) or
