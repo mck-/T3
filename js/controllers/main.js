@@ -68,6 +68,9 @@
         }
       });
     }
+    $scope.starting = function() {
+      return localStorage.starting;
+    };
     $scope.is_pending = function() {
       var _ref;
       return ((_ref = $scope.game) != null ? _ref.started : void 0) === 'pending';
@@ -87,6 +90,7 @@
       return $scope.game = newGame();
     };
     $scope.homepage = function() {
+      $scope.game = null;
       return $location.path("/");
     };
     fullBoard = function(game) {

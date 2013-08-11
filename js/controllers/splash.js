@@ -5,14 +5,17 @@
     $scope.newOnlineGame = function() {
       console.log('Creating new online game');
       localStorage.player = 1;
-      return $location.path("/" + (Math.floor(Math.random() * 78343)));
+      return $location.path("/" + (Math.floor(Math.random() * 99999)));
     };
     $scope.newLocalGame = function() {
       console.log('Creating local game');
       return $location.path("/local");
     };
-    return $scope.howToPlay = function() {
+    $scope.howToPlay = function() {
       return $location.path("/howto");
+    };
+    return $scope.randomMatch = function() {
+      return $location.path("/random");
     };
   });
 
