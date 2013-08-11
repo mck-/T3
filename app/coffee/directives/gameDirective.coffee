@@ -4,7 +4,7 @@ app.directive 'ttt', () ->
     game: '='
     bid: '@'
   restrict: 'E'
-  templateUrl: '../views/board.html'
+  templateUrl: 'views/board.html'
   link: (scope, element, attrs) ->
 
     ## Game utils
