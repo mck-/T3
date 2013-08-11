@@ -3,6 +3,7 @@ app.controller 'RandomCtrl', ($scope, $location, $timeout) ->
   # Clear localstorage
   localStorage.removeItem('player')
   localStorage.removeItem('waiting')
+  localStorage.removeItem('starting')
 
   numRef = new Firebase 'https://3t.firebaseio.com/'
   numRef.on 'value', (data) ->
@@ -28,6 +29,7 @@ app.controller 'RandomCtrl', ($scope, $location, $timeout) ->
     # Second person to connect
     if x.val() and not localStorage.waiting
       console.log 'Second person connected'
+      localStorage.starting = true
       $location.path "/#{x.val()}"
       $scope.$apply()
       localStorage.removeItem('waiting')

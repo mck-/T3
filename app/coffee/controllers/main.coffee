@@ -88,6 +88,10 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   ## Utils
   ## ------------
 
+  # True for the user who matched a waiting online player (Challenge accepted)
+  $scope.starting = () ->
+    localStorage.starting
+
   $scope.is_pending = () ->
     $scope.game?.started is 'pending'
 
