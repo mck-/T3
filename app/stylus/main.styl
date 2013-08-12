@@ -44,6 +44,7 @@ table
 
 .statusbar
   margin-bottom: 0
+  padding: 5vmin 0
   max-width: 100%
   background-color: color_status_bg
   text-align: center
@@ -51,8 +52,9 @@ table
   p
     color: color_status_font
     font-family: font_primary
-    font-size: 5vmin
+    font-size: 3vmin
     font-weight: 800
+    margin: 0
 
   input
     font-size: 3vmin
@@ -60,6 +62,19 @@ table
     text-align: center
     margin: 5vmin auto
     width: 60vw
+
+  .playerBox
+    width: 35vw
+
+    &.player1
+      float: left
+
+    &.player2
+      float: right
+
+    input
+      width: 20vw
+      margin: 0
 
 .turn
   height: 1vh

@@ -4,7 +4,9 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
   $scope.$watch 'game', () ->
     if $scope.game?.started is 'started'
       $scope.game.winner = checkUltimateWinner($scope.game)
-      $scope.game.status = "Player #{$scope.game.winner} is the ultimate winner!" if $scope.game.winner
+      if $scope.game.winner
+        $scope.game.status = "Player #{$scope.game.winner} is the ultimate winner!"
+        $scope.game.turn = 3 # To prevent the game from continuing
 
       # Check for tie game
       if not $scope.game.winner and fullBoard($scope.game)
@@ -20,7 +22,8 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
       winner: false
       started: 'started'
       board_turn: -1
-      status: 'Player 1 to start the game!'
+      name1: "Player 1"
+      name2: "Player 2"
 
     # Initialize all subgames
     for i in [0..8]
@@ -38,6 +41,7 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     # Initialize main game
     $scope.game = newGame()
     $scope.game.local = true
+
 
   ## Online game
   # ------------------
@@ -97,6 +101,12 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
 
   $scope.has_started = () ->
     $scope.game?.started is 'started'
+
+  $scope.player1 = () ->
+    localStorage.player is '1'
+
+  $scope.player2 = () ->
+    localStorage.player is '2'
 
   $scope.your_turn = () ->
     return true if localStorage.local # Always your turn if local
