@@ -2,6 +2,8 @@ app.controller 'SplashCtrl', ($scope, $location) ->
 
   # Clear localstorage
   localStorage.removeItem('player')
+  localStorage.removeItem('starting')
+  localStorage.removeItem('waiting')
 
   $scope.newOnlineGame = () ->
     console.log 'Creating new online game'
