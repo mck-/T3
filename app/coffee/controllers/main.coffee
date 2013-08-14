@@ -112,6 +112,9 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     return true if $scope.game.local # Always your turn if local
     $scope.game.turn?.toString() == localStorage.player
 
+  $scope.turn = () ->
+    $scope.game.turn?.toString()
+
   $scope.rematch = () ->
     $scope.game = newGame()
 

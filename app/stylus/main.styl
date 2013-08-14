@@ -44,7 +44,6 @@ table
 
 .statusbar
   margin-bottom: 0
-  padding: 5vmin 0
   max-width: 100%
   background-color: color_status_bg
   text-align: center
@@ -64,7 +63,7 @@ table
     width: 60vw
 
   .playerBox
-    width: 35vw
+    width: 40vw
 
     &.player1
       float: left
@@ -73,11 +72,36 @@ table
       float: right
 
     input
-      width: 20vw
-      margin: 0
+      width: 30vw
+      margin: 1vh 2vw
+      height: 6vh
+      padding: 2vh
+      font-size: 2.5vw
 
-.turn
-  height: 1vh
+    p
+      width: 30vw
+      height: 6vh
+      line-height: 7vh
+      margin: 1vh 2vw
+      font-size: 2.5vw
+
+  &.top
+    height: 8vh
+
+  .box
+    width: 1vw
+    height: 8vh
+    position: relative
+    top: 0
+
+    &.p1
+      left: 0
+      float: left
+    &.p2
+      right: 0
+      float: right
+    &.slide
+      width: 10vw
 
 // Splash page
 
