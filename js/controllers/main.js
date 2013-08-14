@@ -8,6 +8,7 @@
         $scope.game.winner = checkUltimateWinner($scope.game);
         if ($scope.game.winner) {
           $scope.game.status = "Player " + $scope.game.winner + " is the ultimate winner!";
+          $scope.game.turn = 3;
         }
         if (!$scope.game.winner && fullBoard($scope.game)) {
           $scope.game.tie = true;
@@ -22,7 +23,8 @@
         winner: false,
         started: 'started',
         board_turn: -1,
-        status: 'Player 1 to start the game!'
+        name1: "Player 1",
+        name2: "Player 2"
       };
       for (i = _i = 0; _i <= 8; i = ++_i) {
         game["board" + i] = {
@@ -79,12 +81,22 @@
       var _ref;
       return ((_ref = $scope.game) != null ? _ref.started : void 0) === 'started';
     };
+    $scope.player1 = function() {
+      return localStorage.player === '1' && !$scope.game.winner && !$scope.game.tie;
+    };
+    $scope.player2 = function() {
+      return localStorage.player === '2' && !$scope.game.winner && !$scope.game.tie;
+    };
     $scope.your_turn = function() {
       var _ref;
-      if (localStorage.local) {
+      if ($scope.game.local) {
         return true;
       }
       return ((_ref = $scope.game.turn) != null ? _ref.toString() : void 0) === localStorage.player;
+    };
+    $scope.turn = function() {
+      var _ref;
+      return (_ref = $scope.game.turn) != null ? _ref.toString() : void 0;
     };
     $scope.rematch = function() {
       return $scope.game = newGame();

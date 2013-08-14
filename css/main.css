@@ -9,11 +9,21 @@ table.win2{border:solid #e53b51}
 .playable{-webkit-transform:scale(1);-moz-transform:scale(1)}
 .unplayable{-webkit-transform:scale(.8);-moz-transform:scale(.8);opacity:.5}
 .statusbar{margin-bottom:0;max-width:100%;background-color:#ec6c20;text-align:center;}
-.statusbar p{color:#fff;font-family:"Galindo",sans-serif;font-size:5vmin;font-weight:800}
-.statusbar input{font-size:3vmin;font-family:"Fauna One",serif;text-align:center;margin:5vmin auto;width:60vw}
-.turn{height:1vh}
-.splash{padding:20vh;}
-.splash table{-webkit-transform:scale(1.5);-moz-transform:scale(1.5)}
+.statusbar p{color:#fff;font-family:"Galindo",sans-serif;font-size:5vw;font-weight:800;margin:0}
+.statusbar input{font-size:3vw;font-family:"Fauna One",serif;text-align:center;margin:5vw auto;width:60vw}
+.statusbar .playerBox{width:40vw;}
+.statusbar .playerBox.player1{float:left}
+.statusbar .playerBox.player2{float:right}
+.statusbar .playerBox input{width:30vw;margin:1vh 2vw;height:6vh;padding:2vh;font-size:3.5vw}
+.statusbar .playerBox p{width:30vw;height:6vh;line-height:7vh;margin:1vh 2vw;font-size:3.5vw}
+.statusbar.top{height:8vh;}
+.statusbar.top p.status{font-size:3.5vw;line-height:8vh;width:90vw}
+.statusbar .box{width:1vw;height:8vh;position:relative;top:0;}
+.statusbar .box.p1{left:0;float:left}
+.statusbar .box.p2{right:0;float:right}
+.statusbar .box.slide{width:10vw}
+.splash{padding:18vh 0;}
+.splash table{-webkit-transform:scale(1.8);-moz-transform:scale(1.8)}
 .splash tr:nth-child(3) td:nth-child(2){-webkit-animation-duration:1s;-webkit-animation-name:fadein;-webkit-animation-fill-mode:forwards;-moz-animation-duration:1s;-moz-animation-name:fadein;-moz-animation-fill-mode:forwards}
 .splash tr:nth-child(2) td:nth-child(2){-webkit-animation-delay:.5s;-webkit-animation-duration:1s;-webkit-animation-name:fadein;-webkit-animation-fill-mode:forwards;-moz-animation-delay:.5s;-moz-animation-duration:1s;-moz-animation-name:fadein;-moz-animation-fill-mode:forwards}
 .splash tr:first-child td:nth-child(2){-webkit-animation-delay:1s;-webkit-animation-duration:1s;-webkit-animation-name:fadein;-webkit-animation-fill-mode:forwards;-moz-animation-delay:1s;-moz-animation-duration:1s;-moz-animation-name:fadein;-moz-animation-fill-mode:forwards}

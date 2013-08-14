@@ -18,8 +18,7 @@
           return scope.game.turn.toString() === localStorage.player;
         };
         scope.toggle_turn = function() {
-          scope.game.turn = scope.game.turn === 1 ? 2 : 1;
-          return scope.game.status = "Player " + scope.game.turn + "'s turn ...";
+          return scope.game.turn = scope.game.turn === 1 ? 2 : 1;
         };
         scope.toggle_board_turn = function(square) {
           if (fullBoard(scope.game["board" + square].board)) {

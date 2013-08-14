@@ -2,6 +2,8 @@
 (function() {
   app.controller('SplashCtrl', function($scope, $location) {
     localStorage.removeItem('player');
+    localStorage.removeItem('starting');
+    localStorage.removeItem('waiting');
     $scope.newOnlineGame = function() {
       console.log('Creating new online game');
       localStorage.player = 1;
