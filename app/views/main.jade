@@ -1,10 +1,11 @@
 .game(ng-show="has_started()")
   .row.statusbar.top
-    .box.p1(ng-class="{slide: turn() == 1}")
+    p.status(ng-show="game.winner || game.tie"){{game.status}}
+    .box.p1(ng-class="{slide: turn() == 1}", ng-show="!game.winner && !game.tie")
     .playerBox.player1
       input(type="text", ng-model="game.name1", ng-show="player1()", maxlength="15")
       p(ng-show="player2()") {{game.name1 || "Player 1"}}
-    .box.p2(ng-class="{slide: turn() == 2}")
+    .box.p2(ng-class="{slide: turn() == 2}", ng-show="!game.winner && !game.tie")
     .playerBox.player2
       input(type="text", ng-model="game.name2", ng-show="player2()", maxlength="15")
       p(ng-show="player1()") {{game.name2 || "Player 2"}}

@@ -15,7 +15,6 @@ app.directive 'ttt', () ->
 
     scope.toggle_turn = () ->
       scope.game.turn = if scope.game.turn is 1 then 2 else 1
-      scope.game.status = "Player #{scope.game.turn}'s turn ..."
 
     scope.toggle_board_turn = (square) ->
       if fullBoard(scope.game["board#{square}"].board)

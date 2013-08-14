@@ -103,10 +103,10 @@ app.controller 'MainCtrl', ($scope, T3Factory, $location, $routeParams) ->
     $scope.game?.started is 'started'
 
   $scope.player1 = () ->
-    localStorage.player is '1'
+    localStorage.player is '1' and not $scope.game.winner and not $scope.game.tie
 
   $scope.player2 = () ->
-    localStorage.player is '2'
+    localStorage.player is '2' and not $scope.game.winner and not $scope.game.tie
 
   $scope.your_turn = () ->
     return true if $scope.game.local # Always your turn if local
