@@ -14,8 +14,8 @@ table.win2{border:solid #e53b51}
 .statusbar .playerBox{width:40vw;}
 .statusbar .playerBox.player1{float:left}
 .statusbar .playerBox.player2{float:right}
-.statusbar .playerBox input{width:30vw;margin:1vh 2vw;height:6vh;padding:2vh;font-size:3.5vw}
-.statusbar .playerBox p{width:30vw;height:6vh;line-height:7vh;margin:1vh 2vw;font-size:3.5vw}
+.statusbar .playerBox input{width:30vw;margin:1vh 2vw;height:6vh;padding:2vh;font-size:3.5vmin}
+.statusbar .playerBox p{width:30vw;height:6vh;line-height:7vh;margin:1vh 2vw;font-size:3.5vmin}
 .statusbar.top{height:8vh;}
 .statusbar.top p.status{font-size:3.5vw;line-height:8vh;width:90vw}
 .statusbar .box{width:1vw;height:8vh;position:relative;top:0;}
